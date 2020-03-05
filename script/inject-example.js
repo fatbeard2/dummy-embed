@@ -29,5 +29,7 @@
         otherScriptElement.parentNode.insertBefore(scriptElement, otherScriptElement);
     })(window, document, 'script', '//raw.githack.com/fatbeard2/dummy-embed/master/script/dummy-widget.js', 'dummyWidget');
 
-// configurations that performed by site-owner
-dummyWidget('init', { client_id: 'CLIENT_ID' });
+setTimeout(function(){
+  // configurations that performed by site-owner
+  dummyWidget('init', { client_id: 'CLIENT_ID' });
+})
