@@ -37,6 +37,7 @@
     var url = this.iframeUrl()
     var iframeElement = document.createElement('iframe');
     iframeElement.src = url;
+    iframeElement.style = 'border:1px solid;position:fixed;bottom:0;right:0;';
     document.body.appendChild(iframeElement);
   }
 
