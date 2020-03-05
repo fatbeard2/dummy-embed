@@ -19,6 +19,8 @@
   applyQueuedCalls(queue)
 
   function applyQueuedCalls(queue) {
+    console.log('queue:')
+    console.log(queue)
     if(!queue) return;
 
     for(var i = 0; i < queue.length; i++) {
@@ -28,6 +30,8 @@
   }
 
   function WidgetLoader(initConfig) {
+    console.log('initConfig:')
+    console.log(initConfig)
     this.config = initConfig;
   }
 
@@ -38,7 +42,7 @@
   WidgetLoader.prototype.loadWidget = function() {
     var url = this.iframeUrl()
     var iframeElement = document.createElement('iframe');
-    scriptElement.src = url;
+    iframeElement.src = url;
     document.body.appendChild(iframeElement);
   }
 
