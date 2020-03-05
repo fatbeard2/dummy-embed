@@ -1,11 +1,11 @@
 (function(window, document) {
   var globalName = window['dummyWidgetName']
-  var dummyWidget = window[globalName]
-  var queue = dummyWidget.q
+  var queue = window[globalName].q
 
-  dummyWidget = function() {
+  var dummyWidget = function() {
+    console.log(arguments)
     if(dummyWidget[arguments[0]] && dummyWidget[arguments[0]].apply) {
-      dummyWidget[arguments[0]].apply(null, arguments)
+      dummyWidget[arguments[0]].apply(null, Array.prototype.slice.call(arguments, 1))
     } else {
       console.log('Unknown call: ' + arguments[0])
     }
@@ -16,11 +16,10 @@
     if(config['client_id']) loader.loadWidget();
   }
 
+  window[globalName] = dummyWidget
   applyQueuedCalls(queue)
 
   function applyQueuedCalls(queue) {
-    console.log('queue:')
-    console.log(queue)
     if(!queue) return;
 
     for(var i = 0; i < queue.length; i++) {
@@ -29,14 +28,12 @@
     }
   }
 
-  function WidgetLoader(initConfig) {
-    console.log('initConfig:')
-    console.log(initConfig)
-    this.config = initConfig;
+  function WidgetLoader(config) {
+    this.config = config;
   }
 
   WidgetLoader.prototype.iframeUrl = function() {
-    'https://raw.githack.com/fatbeard2/dummy-embed/master/script/iframe.html?' + 'client_id=' + this.initConfig['client_id']
+    return 'https://raw.githack.com/fatbeard2/dummy-embed/master/script/iframe.html?' + 'client_id=' + this.config['client_id']
   }
 
   WidgetLoader.prototype.loadWidget = function() {
