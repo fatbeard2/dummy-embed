@@ -4,7 +4,7 @@
   var queue = dummyWidget.q
 
   dummyWidget = function() {
-    if dummyWidget[arguments[0]] && dummyWidget[arguments[0]].apply {
+    if(dummyWidget[arguments[0]] && dummyWidget[arguments[0]].apply) {
       dummyWidget[arguments[0]].apply(null, arguments)
     } else {
       console.log('Unknown call: ' + arguments[0])
@@ -12,16 +12,17 @@
   }
 
   dummyWidget.init = function(config) {
-    var loader = new WidgetLoader(config)
-    loader.loadWidget() if config['client_id']
+    var loader = new WidgetLoader(config);
+    if(config['client_id']) loader.loadWidget();
   }
 
-  applyQueuedCalls()
+  applyQueuedCalls(queue)
 
-  function applyQueuedCalls() {
-    var currentEntry;
-    for(var i = 0; i < dummyWidget.q.length; i++) {
-      currentEntry = dummyWidget.q[i]
+  function applyQueuedCalls(queue) {
+    return if !queue;
+
+    for(var i = 0; i < queue.length; i++) {
+      var currentEntry = queue[i]
       dummyWidget.apply(null, currentEntry)
     }
   }
