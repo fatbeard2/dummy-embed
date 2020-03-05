@@ -27,7 +27,7 @@
 
         // inject the script tag before first script tag found within document
         otherScriptElement.parentNode.insertBefore(scriptElement, otherScriptElement);
-    })(window, document, 'script', '//rawcdn.githack.com/fatbeard2/dummy-embed/1e43838126e71f376168b4af00a17bb1b85a7234/script/dummy-widget.js', 'dummyWidget');
+    })(window, document, 'script', '//raw.githack.com/fatbeard2/dummy-embed/master/script/dummy-widget.js', 'dummyWidget');
 
 setTimeout(function(){
   // configurations that performed by site-owner
