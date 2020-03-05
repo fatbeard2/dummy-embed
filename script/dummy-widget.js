@@ -16,9 +16,6 @@
     if(config['client_id']) loader.loadWidget();
   }
 
-  window[globalName] = dummyWidget
-  applyQueuedCalls(queue)
-
   function applyQueuedCalls(queue) {
     if(!queue) return;
 
@@ -43,4 +40,6 @@
     document.body.appendChild(iframeElement);
   }
 
+  window[globalName] = dummyWidget
+  applyQueuedCalls(queue)
 })(window, document)
