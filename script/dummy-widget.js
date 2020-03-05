@@ -19,7 +19,7 @@
   applyQueuedCalls(queue)
 
   function applyQueuedCalls(queue) {
-    return if !queue;
+    if(!queue) return;
 
     for(var i = 0; i < queue.length; i++) {
       var currentEntry = queue[i]
